@@ -8,8 +8,8 @@ RUN pecl install mongodb-1.10.0 -y \
 
 
 
-RUN apt-get update \
-    && apt-get install -y default-mysql-client
+#RUN apt-get update \
+#    && apt-get install -y default-mysql-client
 
 #RUN cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/ && \
 #    cp /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled/
