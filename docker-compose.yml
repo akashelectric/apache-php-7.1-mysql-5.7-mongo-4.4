@@ -1,0 +1,40 @@
+version: "3.2"
+services:
+  php:
+    container_name: php
+    build: './php/'
+    restart: always
+    volumes:
+      - ./php/:/var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wordpress_user_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+
+  mongodb:
+    container_name: mongo
+    image: mongo:4.4
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+
+volumes:
+  mysql:
+  mongodb:
